@@ -1,0 +1,8 @@
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cd.='cd ./'
+alias cd..='cd ../'
+alias cd...='cd ../../'
+alias reload='exec $SHELL -l'
+alias pbcopy='xsel --clipboard --input'
