@@ -122,5 +122,3 @@ ssh-add /home/hiroto/.ssh/id_ed25519
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
-
-exec fish
