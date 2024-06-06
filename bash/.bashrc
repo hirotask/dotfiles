@@ -119,6 +119,9 @@ fi
 eval "$(ssh-agent -s)"
 ssh-add /home/hiroto/.ssh/id_ed25519
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+
+. "$HOME/.cargo/env"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
