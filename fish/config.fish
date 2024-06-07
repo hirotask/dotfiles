@@ -1,7 +1,9 @@
 # Set aliases
 
 alias ls='lsd'
-alias ll='lsd -abghHliS'
+alias ll='ls -al'
+alias la='ls -a'
+alias lt='ls --tree'
 alias cat='bat'
 alias rmdir="rm -rf"
 alias cp='cp -i'
