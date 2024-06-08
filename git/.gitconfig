@@ -1,3 +1,5 @@
 [user]
 	email = hirotaskhashi@gmail.com
 	name = hirotask
+[ghq]
+	root = ~/src
