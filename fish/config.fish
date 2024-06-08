@@ -14,3 +14,16 @@ alias cd.='cd ./'
 alias cd..='cd ../'
 alias cd...='cd ../../'
 alias reload='exec $SHELL -l'
+
+# Set date format
+set -g theme_display_date yes
+set -g theme_date_format "+%F %H:%M"
+
+# display branch nameß
+set -g theme_display_git_master_branch yes
+
+# Customize title bar
+set -g theme_title_display_user no
+set -g theme_title_display_process yes
+set -g theme_title_display_path no
+
