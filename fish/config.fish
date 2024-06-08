@@ -1,5 +1,6 @@
 # Set aliases
 
+alias g='cd $(ghq root)/$(ghq list | peco)'
 alias ls='lsd'
 alias ll='ls -al'
 alias la='ls -a'
