@@ -21,6 +21,10 @@ set -g theme_date_format "+%F %H:%M"
 # display branch name
 set -g theme_display_git_master_branch yes
 
+# dont use legacy keybindings
+set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
+set -x FZF_LEGACY_KEYBINDINGS 0
+
 # Customize title bar
 set -g theme_title_display_user no
 set -g theme_title_display_process yes
