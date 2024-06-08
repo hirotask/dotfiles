@@ -1,5 +1,6 @@
 # Set aliases
 
+alias vim='nvim'
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias ls='lsd'
 alias ll='ls -al'
