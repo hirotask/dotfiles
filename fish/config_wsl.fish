@@ -1,9 +1,8 @@
 # Set aliases
 alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
-alias vim='nvim'
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias ls='exa'
-alias ll='ls -abghHliS'
+alias ll='ls -abghHliS --icons'
 alias la='ls -a'
 alias cat='bat'
 alias rmdir="rm -rf"
@@ -32,6 +31,11 @@ eval (ssh-agent -c)
 ssh-add /home/hiroto/.ssh/id_ed25519
 
 # Adding PATH
+## Add cargo
 set -gx RUSTUP_HOME $HOME/.rustup
 set -gx CARGO_HOME $HOME/.cargo
 fish_add_path $CARGO_HOME/bin
+
+## Add go
+set -gx GOPATH $HOME/go
+fish_add_path $GOPATH/bin
