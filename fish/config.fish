@@ -27,3 +27,6 @@ set -g theme_title_display_user no
 set -g theme_title_display_process yes
 set -g theme_title_display_path no
 
+# Setup ssh-agent
+eval (ssh-agent -c)
+ssh-add /Users/hiroto/.ssh/id_ed25519
