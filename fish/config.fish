@@ -1,5 +1,6 @@
 # Set aliases
 
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias vim='nvim'
 alias g='cd $(ghq root)/$(ghq list | peco)'
 alias ls='lsd'
