@@ -43,3 +43,5 @@ fish_add_path $CARGO_HOME/bin
 ## Add go
 set -gx GOPATH $HOME/go
 fish_add_path $GOPATH/bin
+
+set -gx BROWSER "/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
