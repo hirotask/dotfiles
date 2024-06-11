@@ -1,20 +1,3 @@
-# Set aliases
-alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
-alias g='cd $(ghq root)/$(ghq list | peco)'
-alias ls='exa'
-alias ll='ls -abghHliS --icons'
-alias la='ls -a'
-alias cat='bat'
-alias rmdir="rm -rf"
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-alias cd.='cd ./'
-alias cd..='cd ../'
-alias cd...='cd ../../'
-alias reload='exec $SHELL -l'
-alias pbcopy='xsel --clipboard --input'
-
 # Set date format
 set -g theme_display_date yes
 set -g theme_date_format "+%F %H:%M"
@@ -46,3 +29,22 @@ set -gx GOPATH $HOME/go
 fish_add_path $GOPATH/bin
 
 set -gx BROWSER "/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+
+
+# Set aliases
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+alias g='cd $(ghq root)/$(ghq list | peco)'
+alias ls='exa'
+alias ll='ls -abghHliS --icons'
+alias la='ls -a'
+alias cat='bat'
+alias rmdir="rm -rf"
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias cd.='cd ./'
+alias cd..='cd ../'
+alias cd...='cd ../../'
+alias reload='exec $SHELL -l'
+alias pbcopy='xsel --clipboard --input'
+alias browser=$BROWSER
