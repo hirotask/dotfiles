@@ -13,6 +13,7 @@ alias cd.='cd ./'
 alias cd..='cd ../'
 alias cd...='cd ../../'
 alias reload='exec $SHELL -l'
+alias pbcopy='xsel --clipboard --input'
 
 # Set date format
 set -g theme_display_date yes
