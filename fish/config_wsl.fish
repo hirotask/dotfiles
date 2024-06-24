@@ -24,12 +24,16 @@ set -gx RUSTUP_HOME $HOME/.rustup
 set -gx CARGO_HOME $HOME/.cargo
 fish_add_path $CARGO_HOME/bin
 
+## Add aws
+set -gx AWS /usr/local/bin/aws
+fish_add_path $AWS
+
 ## Add go
 set -gx GOPATH $HOME/go
 fish_add_path $GOPATH/bin
 
 set -gx BROWSER "/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
-
+set -gx BROWSER_USER_DATA_DIR "/mnt/c/Users/systemi/AppData/Local/Google/Chrome/User\ Data/Default"
 
 # Set aliases
 alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
@@ -47,4 +51,4 @@ alias cd..='cd ../'
 alias cd...='cd ../../'
 alias reload='exec $SHELL -l'
 alias pbcopy='xsel --clipboard --input'
-alias browser=$BROWSER
+alias browser="$BROWSER --user-data-dir=$BROWSER_USER_DATA_DIR --start-maximized"
