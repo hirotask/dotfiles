@@ -116,12 +116,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(ssh-agent -s)"
-ssh-add /home/hiroto/.ssh/id_ed25519
-
-
 . "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export RUSTUP_HOME="$HOME/.rustup"
+export CARGO_HOME="$HOME/.cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="/usr/local/bin/aws:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+exec fish
