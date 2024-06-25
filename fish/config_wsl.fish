@@ -52,3 +52,4 @@ alias cd...='cd ../../'
 alias reload='exec $SHELL -l'
 alias pbcopy='xsel --clipboard --input'
 alias browser="$BROWSER --user-data-dir=$BROWSER_USER_DATA_DIR --start-maximized"
+alias deepl="deepl translate --to JA"
