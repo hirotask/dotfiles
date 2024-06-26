@@ -14,6 +14,10 @@ set -g theme_title_display_user no
 set -g theme_title_display_process yes
 set -g theme_title_display_path no
 
+# Setup ssh-agent
+eval (ssh-agent -c)
+ssh-add /home/hiroto/.ssh/id_ed25519
+
 # Adding PATH
 ## Add cargo
 set -gx RUSTUP_HOME $HOME/.rustup
