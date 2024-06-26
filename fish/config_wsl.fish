@@ -14,10 +14,6 @@ set -g theme_title_display_user no
 set -g theme_title_display_process yes
 set -g theme_title_display_path no
 
-# Setup ssh-agent
-eval (ssh-agent -c)
-ssh-add /home/hiroto/.ssh/id_ed25519
-
 # Adding PATH
 ## Add cargo
 set -gx RUSTUP_HOME $HOME/.rustup
@@ -52,4 +48,4 @@ alias cd...='cd ../../'
 alias reload='exec $SHELL -l'
 alias pbcopy='xsel --clipboard --input'
 alias browser="$BROWSER --user-data-dir=$BROWSER_USER_DATA_DIR --start-maximized"
-alias deepl="deepl translate --to JA"
+alias trans="deepl translate --to JA $1"

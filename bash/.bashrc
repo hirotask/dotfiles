@@ -116,6 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+eval `ssh-agent`
+ssh-add /home/hiroto/.ssh/id_ed25519
+
 . "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
 
