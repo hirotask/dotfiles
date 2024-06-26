@@ -132,4 +132,4 @@ export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="/usr/local/bin/aws:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
-exec fish
+# exec fish
