@@ -143,7 +143,7 @@ _replace_by_history() {
 bind -x '"\C-r": _replace_by_history' # Ctrl-R の履歴検索を上書きする
 
 eval `ssh-agent`
-ssh-add /home/hiroto/.ssh/id_ed25519
+ssh-add /home/hirotask/.ssh/id_ed25519
 
 # display git branch name
 

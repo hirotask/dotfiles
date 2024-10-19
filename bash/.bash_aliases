@@ -6,7 +6,7 @@ function chrome(){
 
 alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 alias g='cd $(ghq root)/$(ghq list | peco)'
-alias ls='exa'
+alias ls='eza'
 alias ll='ls -abghHliS --icons'
 alias la='ls -a'
 alias rmdir="rm -rf"
