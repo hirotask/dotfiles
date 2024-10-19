@@ -4,8 +4,6 @@ function chrome(){
     "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" $(wslpath -w $(realpath $1))
 }
 
-alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
-alias g='cd $(ghq root)/$(ghq list | peco)'
 alias ls='eza'
 alias ll='ls -abghHliS --icons'
 alias la='ls -a'

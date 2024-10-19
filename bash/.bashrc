@@ -124,6 +124,21 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export BROWSER="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
 
+# display git branch name
+
+source /usr/local/etc/git-prompt.sh
+source /usr/local/etc/git-completion.bash
+if [ $UID -eq 0 ]; then
+    PS1='\[\033[31m\]\u\[\033[00m\]:\[\033[01m\] \W\[\033[31m\]$(__git_ps1)\[\033[00m\]\\$ '
+else
+    PS1='\[\033[32m\]\u\[\033[00m\]:\[\033[01m\] \W\[\033[31m\]$(__git_ps1)\[\033[00m\]\\$ '
+fi
+
+
+#####################
+# Shortcut の割り当て #
+#####################
+
 _find_and_edit() {
   # fzf でファイルを検索して Visual Studio Code で開く
   fzf | xargs code
@@ -142,15 +157,17 @@ _replace_by_history() {
 
 bind -x '"\C-r": _replace_by_history' # Ctrl-R の履歴検索を上書きする
 
+_peco_ghq() {
+	cd $(ghq root)/$(ghq list | peco)
+}
+
+bind -x '"\C-[": _peco_ghq' # Ctrl-[ に割り当てる
+
+_peco_hub() {
+	hub browse $(ghq list | peco | cut -d "/" -f 2,3)
+}
+
+bind -x '"\C-]": _peco_hub' # Ctrol-] に割り当てる
+
 eval `ssh-agent`
 ssh-add /home/hirotask/.ssh/id_ed25519
-
-# display git branch name
-
-source /usr/local/etc/git-prompt.sh
-source /usr/local/etc/git-completion.bash
-if [ $UID -eq 0 ]; then
-    PS1='\[\033[31m\]\u\[\033[00m\]:\[\033[01m\] \W\[\033[31m\]$(__git_ps1)\[\033[00m\]\\$ '
-else
-    PS1='\[\033[32m\]\u\[\033[00m\]:\[\033[01m\] \W\[\033[31m\]$(__git_ps1)\[\033[00m\]\\$ '
-fi
