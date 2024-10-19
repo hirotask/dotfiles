@@ -116,20 +116,41 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval `ssh-agent`
-ssh-add /home/hiroto/.ssh/id_ed25519
-
-. "$HOME/.cargo/env"
-export PATH="$HOME/.cargo/bin:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export RUSTUP_HOME="$HOME/.rustup"
-export CARGO_HOME="$HOME/.cargo"
-export PATH="$CARGO_HOME/bin:$PATH"
-export PATH="/usr/local/bin/aws:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export BROWSER="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
 
-# exec fish
+_find_and_edit() {
+  # fzf でファイルを検索して Visual Studio Code で開く
+  fzf | xargs code
+}
+
+bind -x '"\C-f": fzf'    # Ctrl-F に割り当てる
+bind -x '"\C-@": _find_and_edit' # Ctrl-@ に割り当てる
+
+_replace_by_history() {
+  # fzf を使った、コマンド履歴検索
+  local l
+  l=$(HISTTIMEFORMAT='' history | sort -k1,1nr | sed -e 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | awk '!a[$0]++{print}' | fzf --query "$READLINE_LINE")
+  READLINE_LINE="$l"
+  READLINE_POINT=${#l}
+}
+
+bind -x '"\C-r": _replace_by_history' # Ctrl-R の履歴検索を上書きする
+
+eval `ssh-agent`
+ssh-add /home/hiroto/.ssh/id_ed25519
+
+# display git branch name
+
+source /usr/local/etc/git-prompt.sh
+source /usr/local/etc/git-completion.bash
+if [ $UID -eq 0 ]; then
+    PS1='\[\033[31m\]\u\[\033[00m\]:\[\033[01m\] \W\[\033[31m\]$(__git_ps1)\[\033[00m\]\\$ '
+else
+    PS1='\[\033[32m\]\u\[\033[00m\]:\[\033[01m\] \W\[\033[31m\]$(__git_ps1)\[\033[00m\]\\$ '
+fi
