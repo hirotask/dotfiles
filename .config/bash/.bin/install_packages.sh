@@ -26,24 +26,8 @@ sudo add-apt-repository ppa:longsleep/golang-backports && \
 	sudo apt-get update && \
 	sudo apt-get install -y golang-go
 
-# Link dotfiles
-
-ln -sf .bashrc ~/.bashrc
-ln -sf .bash_aliases ~/.bash_aliases
-
-source ~/.bashrc
-source ~/.bash_aiases
-
 # Install ghq + peco
 
 go install github.com/motemen/ghq@latest
 go install github.com/peco/peco/cmd/peco@latest
 go install github.com/github/hub@latest
-
-# Move git configuration files
-
-sudo mv git-completion.bash /usr/local/etc/
-sudo mv git-prompt.sh /usr/local/etc/
-
-sudo chmod 644 /usr/local/etc/git-completion.bash
-sudo chmod 644 /usr/local/etc/git-prompt.sh
