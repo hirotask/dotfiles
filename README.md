@@ -1,5 +1,25 @@
 # dotfiles
 
-## ディレクトリ構成
+## Installation
 
-ディレクトリ構成は https://github.com/yutkat/dotfiles の構成を参考にしています。
+1. Clone this repository
+```
+git clone https://github.com/hirotask/dotfiles.git
+cd dotfiles
+```
+
+2. Install
+```
+./install.sh
+```
+
+3. (If you want to use zsh, run)
+```
+exec zsh
+```
+
+4. Enjoy!
+
+## Directory structure
+
+The directory structure is based on https://github.com/yutkat/dotfiles .
