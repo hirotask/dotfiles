@@ -118,6 +118,12 @@ Jobs="\j"
 ##############
 ulimit -c 10000000
 # 履歴のサイズ
+function share_history {
+    history -a
+    history -c
+    history -r
+}
+PROMPT_COMMAND='share_history'
 HISTSIZE=1000
 HISTFILESIZE=2000
 
