@@ -277,56 +277,22 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME:+$FUNCNAME(): }'
 
 
 ##############
-### Export ###
+### Environment variables ###
 ##############
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -f ~/.common_env ]; then
+    source ~/.common_env
+fi
 
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export BROWSER="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
-
-export PATH="$PATH:$HOME/.bin"
-
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 #####################
 # Shortcut の割り当て #
 #####################
+[ -f "$HOME/.config/bash/bindkeys.bash" ] && source "$HOME/.config/bash/bindkeys.bash"
 
-_find_and_edit() {
-  # fzf でファイルを検索して Visual Studio Code で開く
-  fzf | xargs code
-}
-
-bind -x '"\C-f": fzf'    # Ctrl-F に割り当てる
-bind -x '"\C-@": _find_and_edit' # Ctrl-@ に割り当てる
-
-_replace_by_history() {
-  # fzf を使った、コマンド履歴検索
-  local l
-  l=$(HISTTIMEFORMAT='' history | sort -k1,1nr | sed -e 's/^[[:space:]]*[0-9]\+[[:space:]]*//' | awk '!a[$0]++{print}' | fzf --query "$READLINE_LINE")
-  READLINE_LINE="$l"
-  READLINE_POINT=${#l}
-}
-
-bind -x '"\C-r": _replace_by_history' # Ctrl-R の履歴検索を上書きする
-
-_peco_ghq() {
-	cd $(ghq root)/$(ghq list | peco)
-}
-
-bind -x '"\C-[": _peco_ghq' # Ctrl-[ に割り当てる
-
-_peco_hub() {
-	hub browse $(ghq list | peco | cut -d "/" -f 2,3)
-}
-
-bind -x '"\C-]": _peco_hub' # Ctrol-] に割り当てる
 
 ##########################
 ## load local settings ###
 ##########################
-if [ -f ~/.bashrc.local ]; then
-    source ~/.bashrc.local
-fi
+[ -f "$HOME/.bashrc.local" ] && source ~/.bashrc.local
+

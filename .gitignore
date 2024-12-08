@@ -1,1 +1,4 @@
-.config/bash/.bashrc.local
+#####################
+#	local files		#
+#####################
+.bashrc.local

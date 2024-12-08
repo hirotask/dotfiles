@@ -25,7 +25,7 @@ function main() {
 
 	local is_install="false"
 	local is_link="false"
-	local is_update="false"
+	local install_extra_packages="false"
 
 	while [ $# -gt 0 ]; do
 		case ${1} in
@@ -35,18 +35,18 @@ function main() {
 				;;
 			install)
 				is_install="true"
-				is_update="true"
+				install_extra_packages="true"
 				is_link="true"
 				;;
-			update)
+			install-extra)
 				is_install="true"
 				is_link="false"
-				is_update="true"
+				install_extra_packages="true"
 				;;
 			link)
 				is_install="false"
 				is_link="true"
-				is_update="false"
+				install_extra_packages="false"
 				;;
 			--all) ;;
 
@@ -64,33 +64,36 @@ function main() {
 	done
 
 	# default behaviour
-	if [[ "$is_install" == false && "$is_link" == false && "$is_update" == false ]]; then
+	if [[ "$is_install" == false && "$is_link" == false && "$install_extra_packages" == false ]]; then
 		is_install="true"
 		is_link="true"
-		is_update="true"
+		install_extra_packages="true"
 	fi
 
 	if [[ "$is_install" = true ]]; then
-		source $current_dir/lib/install-required-packages.sh
+		source $current_dir/lib/install_required_packages.sh
+		print_info ""
+		print_info "#####################################################"
+		print_info "$(basename "${BASH_SOURCE[0]:-$0}") install required packages!!!"
+		print_info "#####################################################"
+		print_info ""
+
+		if [[ "$install_extra_packages" = true ]]; then
+			source $current_dir/lib/install_extra_packages.sh
+			print_info ""
+			print_info "#####################################################"
+			print_info "$(basename "${BASH_SOURCE[0]:-$0}") install extra packages!!!"
+			print_info "#####################################################"
+			print_info ""
+		fi
 	fi
 
 	if [[ "$is_link" = true ]]; then
-		source $current_dir/lib/link-to-homedir.sh
+		source $current_dir/lib/link_homedir.sh
 		source $current_dir/lib/gitconfig.sh
 		print_info ""
 		print_info "#####################################################"
 		print_info "$(basename "${BASH_SOURCE[0]:-$0}") link success!!!"
-		print_info "#####################################################"
-		print_info ""
-	fi
-
-	if [[ "$is_update" = true ]]; then
-		source $current_dir/lib/install-basic-packages.sh
-		source $current_dir/lib/install-neovim.sh
-
-		print_info ""
-		print_info "#####################################################"
-		print_info "$(basename "${BASH_SOURCE[0]:-$0}") update finish!!!"
 		print_info "#####################################################"
 		print_info ""
 	fi

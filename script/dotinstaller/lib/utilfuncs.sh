@@ -37,7 +37,7 @@ function chkcmd() {
 
 function yes_or_no_select() {
 	local answer
-	print_notice "Are you ready? [yes/no]"
+	print_notice "$1"
 	read -r answer
 	case $answer in
 		yes | y)
