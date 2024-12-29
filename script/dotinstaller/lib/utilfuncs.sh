@@ -110,7 +110,7 @@ function checkinstall() {
 		pkgs=${pkgs//python-pip/py-pip}
 		sudo apk add $pkgs
 	else
-		:
+		sudo brew install $pkgs
 	fi
 }
 
