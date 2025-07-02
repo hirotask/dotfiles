@@ -1,3 +1,7 @@
 [submodule ".config/oh-my-zsh"]
 	path = .config/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+
+[submodule ".config/oh-my-bash"]
+	path = .config/oh-my-bash
+	url = https://github.com/ohmybash/oh-my-bash.git
