@@ -2,3 +2,4 @@
 #	local files		#
 #####################
 .bashrc.local
+.bash_aliases.local

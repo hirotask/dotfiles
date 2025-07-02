@@ -300,5 +300,6 @@ fi
 ##########################
 ## load local settings ###
 ##########################
+[ -f "$HOME/.bash_aliases.local" ] && source ~/.bash_aliases.local
 [ -f "$HOME/.bashrc.local" ] && source ~/.bashrc.local
-
+[ -f "$HOME/.local/bin/env" ] && source ~/.local/bin/env
