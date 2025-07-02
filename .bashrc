@@ -1,285 +1,165 @@
-# .bashrc
+# Enable the subsequent settings only in interactive sessions
+case $- in
+  *i*) ;;
+    *) return;;
+esac
+
+# Path to your oh-my-bash installation.
+export OSH='~/.config/oh-my-bash'
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-bash is loaded.
+OSH_THEME="font"
+
+# If you set OSH_THEME to "random", you can ignore themes you don't like.
+# OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
+# You can also specify the list from which a theme is randomly selected:
+# OMB_THEME_RANDOM_CANDIDATES=("font" "powerline-light" "minimal")
+
+# Uncomment the following line to use case-sensitive completion.
+# OMB_CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# OMB_HYPHEN_SENSITIVE="false"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_OSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you don't want the repository to be considered dirty
+# if there are untracked files.
+# SCM_GIT_DISABLE_UNTRACKED_DIRTY="true"
+
+# Uncomment the following line if you want to completely ignore the presence
+# of untracked files in the repository.
+# SCM_GIT_IGNORE_UNTRACKED="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.  One of the following values can
+# be used to specify the timestamp format.
+# * 'mm/dd/yyyy'     # mm/dd/yyyy + time
+# * 'dd.mm.yyyy'     # dd.mm.yyyy + time
+# * 'yyyy-mm-dd'     # yyyy-mm-dd + time
+# * '[mm/dd/yyyy]'   # [mm/dd/yyyy] + [time] with colors
+# * '[dd.mm.yyyy]'   # [dd.mm.yyyy] + [time] with colors
+# * '[yyyy-mm-dd]'   # [yyyy-mm-dd] + [time] with colors
+# If not set, the default value is 'yyyy-mm-dd'.
+# HIST_STAMPS='yyyy-mm-dd'
+
+# Uncomment the following line if you do not want OMB to overwrite the existing
+# aliases by the default OMB aliases defined in lib/*.sh
+# OMB_DEFAULT_ALIASES="check"
+
+# Would you like to use another custom folder than $OSH/custom?
+# OSH_CUSTOM=/path/to/new-custom-folder
+
+# To disable the uses of "sudo" by oh-my-bash, please set "false" to
+# this variable.  The default behavior for the empty value is "true".
+OMB_USE_SUDO=true
+
+# To enable/disable display of Python virtualenv and condaenv
+# OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
+# OMB_PROMPT_SHOW_PYTHON_VENV=false # disable
+
+# To enable/disable Spack environment information
+# OMB_PROMPT_SHOW_SPACK_ENV=true  # enable
+# OMB_PROMPT_SHOW_SPACK_ENV=false # disable
+
+# Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
+# Custom completions may be added to ~/.oh-my-bash/custom/completions/
+# Example format: completions=(ssh git bundler gem pip pip3)
+# Add wisely, as too many completions slow down shell startup.
+completions=(
+  git
+  composer
+  ssh
+)
+
+# Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
+# Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
+# Example format: aliases=(vagrant composer git-avh)
+# Add wisely, as too many aliases slow down shell startup.
+aliases=(
+  general
+)
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
+# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  bashmarks
+)
+
+# Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
+# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
+# Example format:
+#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
+#      plugins+=(tmux-autoattach)
+#  fi
+
+# If you want to reduce the initialization cost of the "tput" command to
+# initialize color escape sequences, you can uncomment the following setting.
+# This disables the use of the "tput" command, and the escape sequences are
+# initialized to be the ANSI version:
+#
+#OMB_TERM_USE_TPUT=no
+
+source "$OSH"/oh-my-bash.sh
+
+# User configuration
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-bash libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-bash
+# users are encouraged to define aliases within the OSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias bashconfig="mate ~/.bashrc"
+# alias ohmybash="mate ~/.oh-my-bash"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
-
-
-####################
-### 先行読み込み ###
-####################
-if [ -f /etc/profile.d/bash_completion.sh ]; then
-    source /etc/profile.d/bash_completion.sh
-elif [ -f ~/.bin/completion/bash_completion.sh ]; then
-    source ~/.bin/completion/bash_completion.sh
-fi
-
-if [ -f /etc/profile.d/git-prompt.sh ]; then
-    source /etc/profile.d/git-prompt.sh
-elif [ -f ~/.bin/completion/git-prompt.sh ]; then
-    source ~/.bin/completion/git-prompt.sh
-fi
-
-if [ -f ~/.bin/completion/git-completion.bash ]; then
-    source ~/.bin/completion/git-completion.bash
-fi
-
-if [ -f ~/.bin/completion/mvn_completion.sh ]; then
-    source ~/.bin/completion/mvn_completion.sh
-fi
-
-####################
-### Color Define ###
-####################
-# Reset
-Color_Off="\033[0m"       # Text Reset
-
-# Regular Colors
-Black="\033[0;30m"        # Black
-Red="\033[0;31m"          # Red
-Green="\033[0;32m"        # Green
-Yellow="\033[0;33m"       # Yellow
-Blue="\033[0;34m"         # Blue
-Purple="\033[0;35m"       # Purple
-Cyan="\033[0;36m"         # Cyan
-White="\033[0;37m"        # White
-
-# Bold
-BBlack="\033[1;30m"       # Black
-BRed="\033[1;31m"         # Red
-BGreen="\033[1;32m"       # Green
-BYellow="\033[1;33m"      # Yellow
-BBlue="\033[1;34m"        # Blue
-BPurple="\033[1;35m"      # Purple
-BCyan="\033[1;36m"        # Cyan
-BWhite="\033[1;37m"       # White
-
-# Underline
-UBlack="\033[4;30m"       # Black
-URed="\033[4;31m"         # Red
-UGreen="\033[4;32m"       # Green
-UYellow="\033[4;33m"      # Yellow
-UBlue="\033[4;34m"        # Blue
-UPurple="\033[4;35m"      # Purple
-UCyan="\033[4;36m"        # Cyan
-UWhite="\033[4;37m"       # White
-
-# Background
-On_Black="\033[40m"       # Black
-On_Red="\033[41m"         # Red
-On_Green="\033[42m"       # Green
-On_Yellow="\033[43m"      # Yellow
-On_Blue="\033[44m"        # Blue
-On_Purple="\033[45m"      # Purple
-On_Cyan="\033[46m"        # Cyan
-On_White="\033[47m"       # White
-
-# High Intensty
-IBlack="\033[0;90m"       # Black
-IRed="\033[0;91m"         # Red
-IGreen="\033[0;92m"       # Green
-IYellow="\033[0;93m"      # Yellow
-IBlue="\033[0;94m"        # Blue
-IPurple="\033[0;95m"      # Purple
-ICyan="\033[0;96m"        # Cyan
-IWhite="\033[0;97m"       # White
-
-# Bold High Intensty
-BIBlack="\033[1;90m"      # Black
-BIRed="\033[1;91m"        # Red
-BIGreen="\033[1;92m"      # Green
-BIYellow="\033[1;93m"     # Yellow
-BIBlue="\033[1;94m"       # Blue
-BIPurple="\033[1;95m"     # Purple
-BICyan="\033[1;96m"       # Cyan
-BIWhite="\033[1;97m"      # White
-
-# High Intensty backgrounds
-On_IBlack="\033[0;100m"   # Black
-On_IRed="\033[0;101m"     # Red
-On_IGreen="\033[0;102m"   # Green
-On_IYellow="\033[0;103m"  # Yellow
-On_IBlue="\033[0;104m"    # Blue
-On_IPurple="\033[10;95m"  # Purple
-On_ICyan="\033[0;106m"    # Cyan
-On_IWhite="\033[0;107m"   # White
-
-# Various variables you might want for your PS1 prompt instead
-Time12h="\T"
-Time12a="\@"
-PathShort="\w"
-PathFull="\W"
-NewLine="\n"
-Jobs="\j"
-
-##############
-### Custom ###
-##############
-ulimit -c 10000000
-# 履歴のサイズ
-function share_history {
-    history -a
-    history -c
-    history -r
-}
-PROMPT_COMMAND='share_history'
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-# 履歴ファイルを上書きではなく追加する。
-# 複数のホストで同時にログインすることがあるので、上書きすると危険だ。
-shopt -s histappend
-# "!"をつかって履歴上のコマンドを実行するとき、
-# 実行するまえに必ず展開結果を確認できるようにする。
-shopt -s histverify
-# 履歴の置換に失敗したときやり直せるようにする。
-shopt -s histreedit
-# 端末の画面サイズを自動認識。
-shopt -s checkwinsize
-# "@" のあとにホスト名を補完させない。
-shopt -u hostcomplete
-# つねにパス名のテーブルをチェックする。
-shopt -s checkhash
-# 変数を展開する
-shopt -s cdable_vars
-# なにも入力してないときはコマンド名を補完しない。
-# (メチャクチャ候補が多いので。)
-shopt -s no_empty_cmd_completion
-export HISTCONTROL=ignoreboth
-export HISTIGNORE=cd:history:ls:which   #you can use wild cart(*,?)
-# Ctrl-dでログアウトしない
-set -o ignoreeof
-# GUIで認証しない
-unset SSH_ASKPASS
-# lessでカラー表示
-export LESS='--no-init -R --shift 4 --LONG-PROMPT --quit-if-one-screen'
-
-# ターミナル使用時の設定 #
-case "$TERM" in
-  kterm|*xterm*|sun|screen*)
-    # stty
-    stty erase '^H'
-    stty erase '^?'
-    stty werase '^W'
-    stty stop undef
-    # word delete
-    stty werase undef
-    if [[ "$-" =~ "i" ]]; then
-        # 隠しファイルを補完候補に入れない
-        bind 'set match-hidden-files off'
-        bind '\C-w:unix-filename-rubout'
-    fi
-    _termtitle="\h:\w"
-    ;;
-esac
-
-################
-### Complete ###
-################
-complete -d cd
-complete -c man
-complete -c h
-complete -c wi
-complete -v unset
-
-#############
-### Alias ###
-#############
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-
-######################
-### PROMPT_COMMAND ###
-######################
-function length() {
-    echo -n "${#1}"
-}
-
-function init_prompt_git_branch() {
-    git branch &>/dev/null
-    if [ $? -eq 0 ]; then
-      echo -ne "$(GIT_LFS_SKIP_SMUDGE=1 echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-      if [ "$?" -eq "0" ]; then \
-        # @4 - Clean repository - nothing to commit
-        echo ""$Green""$(__git_ps1 " (%s)"); \
-      else \
-        # @5 - Changes to working tree
-        echo ""$IRed""$(__git_ps1 " (%s)"); \
-      fi) "$BYellow$Color_Off""
-    else
-      # @2 - Prompt when not in GIT repo
-      echo -ne " "$Yellow$Color_Off""
-    fi
-}
-
-
-function branch_length()  {
-    #length "`echo -ne \"\$(__git_ps1)\"`"
-    length "`echo -ne ===2017-06-06T21:58:36===`"
-}
-
-function prompt_right_aligned() {
-    echo -ne "\e[$[COLUMNS]D\e[$[COLUMNS-$(branch_length)-1]C"
-}
-
-function __show_status() {
-    local status=$(echo ${PIPESTATUS[@]})
-    local SETCOLOR_SUCCESS="echo -ne $Green"
-    local SETCOLOR_FAILURE="echo -ne $Red"
-    local SETCOLOR_WARNING="echo -ne $Yellow"
-    local SETCOLOR_NORMAL="echo -ne $Color_Off"
-
-    local SETCOLOR s
-    for s in ${status}; do
-        if [ ${s} -gt 100 ] ; then
-            SETCOLOR=${SETCOLOR_FAILURE}
-        elif [ ${s} -gt 0 ] ; then
-            SETCOLOR=${SETCOLOR_WARNING}
-        else
-            SETCOLOR=${SETCOLOR_SUCCESS}
-        fi
-    done
-    ${SETCOLOR}
-    if [ "${SETCOLOR}" != "${SETCOLOR_SUCCESS}" ]; then
-        echo -ne "(${status// /|}) "
-    fi
-    ${SETCOLOR_NORMAL}
-}
-
-function __prompt_command() {
-  share_history
-}
-
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES="enable"
-GIT_PS1_SHOWUPSTREAM="auto"
-
-function colorize_by_host() {
-  local hash=$(hostname | sha256sum | cut -b 1-2)
-  local color_fg=$(( $(echo "0x"${hash:0:1}) % 8 ))
-  local color_bg=$(( $(echo "0x"${hash:1:1}) % 8 ))
-  if [[ $color_fg -eq $color_bg ]]; then
-    color_bg=$(( ($color_bg +1) % 8 + 40 ))
-  else
-    color_bg=$(( ($color_bg +1) % 8 + 40 ))
-  fi
-  if [[ ${color_fg} -eq 0 ]]; then
-    color_fg=$(( ($color_fg +1) % 8 ))
-  fi
-  color_fg=$(( $color_fg + 30 ))
-  #echo "\e[${color_fg}m\e[${color_bg}m\]"
-  echo "\e[${color_fg}m\]"
-}
-
-
-PROMPT_COLOR="\033[0;37;40m"
-#export PS1="${PROMPT_COLOR}[\u@\h:\w]${Color_Off}\$(init_prompt_git_branch)\$(prompt_right_aligned)${PROMPT_COLOR}===\D{%FT%T}===${Color_Off}\n\$ "
-export PS1="${PROMPT_COLOR}[\u@\h:\w]${Color_Off}\$(init_prompt_git_branch)\$(__show_status)\$(prompt_right_aligned)$(colorize_by_host)===\D{%FT%T}===${Color_Off}\n\$ "
-PROMPT_COMMAND=__prompt_command
-export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME:+$FUNCNAME(): }'
 
 
 ##############

@@ -20,3 +20,18 @@ function peco_ghq() {
 function peco_hub() {
 	hub browse $(ghq list | peco | cut -d "/" -f 2,3)
 }
+
+function trash() {
+    NOWDATE=`date  +"%y%m%d-%H%M%S"`
+
+    if [ ! -d ~/.trash/$NOWDATE ];then
+      mkdir -p ~/.trash/$NOWDATE
+    fi
+
+    while [ "$1" != "" ];do
+        if [ "${1:0:1}" != "-" ];then
+            mv "$1" ~/.trash/$NOWDATE && echo "mv "$1" ~/.trash/$NOWDATE"
+        fi
+        shift
+    done
+}
