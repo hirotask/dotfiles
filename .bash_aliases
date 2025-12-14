@@ -24,7 +24,9 @@ alias pg='peco_ghq'
 alias pgh='peco_hub'
 alias rh='replace_by_history'
 alias fzfe='find_and_edit'
-
+alias nvim="$HOME/.bin/nvim-linux-x86_64.appimage"
+alias vim="nvim"
+alias vi="nvim"
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
