@@ -4,7 +4,7 @@
 
 1. Clone this repository
 ```
-git clone https://github.com/hirotask/dotfiles.git
+git clone --recursive https://github.com/hirotask/dotfiles.git
 cd dotfiles
 ```
 
