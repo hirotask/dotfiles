@@ -14,24 +14,24 @@ function replace_by_history() {
 }
 
 function peco_ghq() {
-	cd $(ghq root)/$(ghq list | peco)
+  cd $(ghq root)/$(ghq list | peco)
 }
 
 function peco_hub() {
-	hub browse $(ghq list | peco | cut -d "/" -f 2,3)
+  hub browse $(ghq list | peco | cut -d "/" -f 2,3)
 }
 
 function trash() {
-    NOWDATE=`date  +"%y%m%d-%H%M%S"`
+  TRASH_DIR=${1:-~/.trash}
+  NOWDATE=$(date +"%y%m%d-%H%M%S")
 
-    if [ ! -d ~/.trash/$NOWDATE ];then
-      mkdir -p ~/.trash/$NOWDATE
+  if [ ! -d $TRASHDIR/$NOWDATE ]; then
+    mkdir -p $TRASH_DIR/$NOWDATE
+  fi
+  while [ "$1" != "" ]; do
+    if [ "${1:0:1}" != "-" ]; then
+      mv "$1" $TRASH_DIR/$NOWDATE && echo "mv "$1" $TRASH_DIR/$NOWDATE"
     fi
-
-    while [ "$1" != "" ];do
-        if [ "${1:0:1}" != "-" ];then
-            mv "$1" ~/.trash/$NOWDATE && echo "mv "$1" ~/.trash/$NOWDATE"
-        fi
-        shift
-    done
+    shift
+  done
 }
