@@ -1,5 +1,6 @@
 #####################
 #	local files		#
 #####################
+.local
 .bashrc.local
 .bash_aliases.local
