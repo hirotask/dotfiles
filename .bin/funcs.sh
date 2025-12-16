@@ -28,9 +28,9 @@ function trash() {
   if [ ! -d $TRASHDIR/$NOWDATE ]; then
     mkdir -p $TRASH_DIR/$NOWDATE
   fi
-  while [ "$1" != "" ]; do
-    if [ "${1:0:1}" != "-" ]; then
-      mv "$1" $TRASH_DIR/$NOWDATE && echo "mv "$1" $TRASH_DIR/$NOWDATE"
+  while [ "$2" != "" ]; do
+    if [ "${2:1:2}" != "-" ]; then
+      mv "$2" $TRASH_DIR/$NOWDATE && echo "mv "$2" $TRASH_DIR/$NOWDATE"
     fi
     shift
   done
