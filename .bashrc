@@ -1,26 +1,26 @@
 # Enable the subsequent settings only in interactive sessions
 case $- in
-  *i*) ;;
-    *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+  . /etc/bashrc
 fi
 
 ##############
 ### Environment variables ###
 ##############
 if [ -f ~/.common_env ]; then
-    source ~/.common_env
+  source ~/.common_env
 fi
 
 ###########################
 ### 	 Aliases		###
 ###########################
 if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+  source ~/.bash_aliases
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -32,12 +32,12 @@ fi
 [ -f "$HOME/.bashrc.local" ] && source ~/.bashrc.local
 [ -f "$HOME/.local/bin/env" ] && source ~/.local/bin/env
 
-# Setup StarShip
-eval "$(starship init bash)"
-
 # fnm
-FNM_PATH="/home/hirotask/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env)"
 fi
+
+# Setup StarShip
+eval "$(starship init bash)"
