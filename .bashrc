@@ -39,5 +39,11 @@ if [ -d "$FNM_PATH" ]; then
   eval "$(fnm env)"
 fi
 
+# nvim
+NVIM_PATH="/opt/nvim"
+if [ "$NVIM_PATH" ]; then
+  export PATH="$PATH:/opt/nvim/"
+fi
+
 # Setup StarShip
 eval "$(starship init bash)"
