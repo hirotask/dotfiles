@@ -6,5 +6,12 @@ return {
     "MunifTanjim/nui.nvim", -- To build the plugin UI
     "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
   },
-  config = true,
+  config = function()
+    require("remote-nvim").setup({
+      devpod = {
+        binary = "/usr/local/bin/devpod",
+        docker_binary = "/usr/bin/docker",
+      },
+    })
+  end,
 }
