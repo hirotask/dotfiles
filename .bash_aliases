@@ -1,6 +1,6 @@
 # Set aliases
 
-source ~/.bin/funcs.sh
+source ~/bin/funcs.sh
 
 alias l='ls -CF'
 # Add an "alert" alias for long running commands.  Use like so:
