@@ -1,4 +1,8 @@
-# dotfiles
+# dotfile
+
+## Prerequisite
+
+- [Wezterm](https://wezterm.org/installation.html) is already installed.
 
 ## Installation
 
