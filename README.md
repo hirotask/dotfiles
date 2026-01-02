@@ -1,8 +1,4 @@
-# dotfile
-
-## Prerequisite
-
-- [Wezterm](https://wezterm.org/installation.html) is already installed.
+# dotfiles
 
 ## Installation
 
@@ -17,12 +13,19 @@ cd dotfiles
 ./install.sh
 ```
 
-3. (If you want to use zsh, run)
+3. Run the Wezterm
+```
+wezterm
+```
+```
+```
+
+4. (If you want to use zsh, run)
 ```
 exec zsh
 ```
 
-4. Enjoy!
+5. Enjoy!
 
 ## Directory structure
 
