@@ -5,3 +5,4 @@
 local opt = vim.opt
 
 opt.clipboard = "unnamed"
+opt.conceallevel = 0

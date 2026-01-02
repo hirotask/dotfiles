@@ -17,8 +17,6 @@ cd dotfiles
 ```
 wezterm
 ```
-```
-```
 
 4. (If you want to use zsh, run)
 ```
