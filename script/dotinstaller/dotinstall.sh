@@ -35,7 +35,7 @@ function main() {
 				;;
 			install)
 				is_install="true"
-				install_extra_packages="true"
+				install_extra_packages="false"
 				is_link="true"
 				;;
 			install-extra)

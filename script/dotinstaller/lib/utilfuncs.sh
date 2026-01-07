@@ -139,3 +139,69 @@ function mkdir_not_exist() {
 		mkdir -p "$1"
 	fi
 }
+
+## Read lines from a file into an array (mapfile/readarray fallback)
+#
+# Usage:
+#   read_lines_into_array result_array_name file_path [skip_comments] [ignore_empty]
+#   - result_array_name: name of array variable to set (without $)
+#   - file_path: path to input file
+#   - skip_comments: "true" to ignore lines starting with # (optional)
+#   - ignore_empty: "true" to ignore empty lines (optional)
+#
+# This function trims a trailing CR (\r) from each line so files with CRLF
+# line endings behave sensibly on Unix. If the file does not exist it sets
+# the named array to an empty array and returns success.
+function read_lines_into_array() {
+	local __resultvar="$1"
+	local __file="$2"
+	local __skip_comments="${3:-false}"
+	local __ignore_empty="${4:-false}"
+	local -a __lines=()
+
+	if [[ -z "$__resultvar" ]]; then
+		print_error "read_lines_into_array: result array name required"
+		return 2
+	fi
+
+	if [[ ! -f "$__file" ]]; then
+		# Ensure caller receives an empty array
+		eval "$__resultvar=()"
+		return 0
+	fi
+
+	while IFS= read -r __line || [[ -n $__line ]]; do
+		# remove CR from CRLF files
+		__line="${__line%$'\r'}"
+
+		if [[ "$__ignore_empty" == "true" && -z "$__line" ]]; then
+			continue
+		fi
+
+		if [[ "$__skip_comments" == "true" ]]; then
+			# skip lines that start with optional whitespace then #
+			if [[ "$__line" =~ ^[[:space:]]*# ]]; then
+				continue
+			fi
+		fi
+
+		__lines+=("$__line")
+	done <"$__file"
+
+	# assign the temporary array to the caller's array variable
+	eval "$__resultvar=(\"\${__lines[@]}\")"
+}
+
+# Compatibility helper: prefer builtin mapfile/readarray when available
+# Usage: mapfile_compat array_name file_path
+function mapfile_compat() {
+	local __arrname="$1"
+	local __file="$2"
+	if [[ $(type -t mapfile) == builtin ]]; then
+		# use subshellless redirection like original usage
+		mapfile -t "$__arrname" <"$__file"
+	else
+		# fallback: ignore comment lines and keep empty lines (behaviour can be adjusted)
+		read_lines_into_array "$__arrname" "$__file" false false
+	fi
+}

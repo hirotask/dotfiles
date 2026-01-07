@@ -13,9 +13,9 @@ cd dotfiles
 ./install.sh
 ```
 
-3. Run the Wezterm
+3. (If you want to install extra-packages, run)
 ```
-wezterm
+./script/dotinstaller/dotinstall.sh install-extra
 ```
 
 4. (If you want to use zsh, run)

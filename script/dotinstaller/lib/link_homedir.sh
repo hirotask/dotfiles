@@ -83,7 +83,7 @@ function link_to_homedir() {
   dotfiles_dir="$(builtin cd "$current_dir" && git rev-parse --show-toplevel)"
   linkignore=()
   if [[ -e "$dotfiles_dir/.linkignore" ]]; then
-  	mapfile -t linkignore <"$dotfiles_dir/.linkignore"
+    mapfile_compat linkignore "$dotfiles_dir/.linkignore"
   fi
   if [[ "$HOME" != "$dotfiles_dir" ]]; then
     for f in "$dotfiles_dir"/.??*; do
