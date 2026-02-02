@@ -2,8 +2,6 @@
 
 set -ue
 
-source $(dirname "${BASH_SOURCE[0]:-$0}")/utilfuncs.sh
-
 mkdir -p ~/.local/share/fonts
 
 # FiraCode Nerd Font
