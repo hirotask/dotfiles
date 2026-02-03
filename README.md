@@ -25,6 +25,18 @@ exec zsh
 
 5. Enjoy!
 
+## How to start programming
+
+If you start programming, run:
+
+```bash
+ide
+```
+
+You can choose the project and start programming using the layout below:
+
+![](doc/image.png)
+
 ## Directory structure
 
 The directory structure is based on https://github.com/yutkat/dotfiles .

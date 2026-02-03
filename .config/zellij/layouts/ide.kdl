@@ -13,7 +13,7 @@ layout {
     pane split_direction="vertical" {
       pane split_direction="horizontal" {
         pane focus=true name="Editor" {
-          command "nvim"
+          command "/opt/nvim/nvim"
         }
         pane size="30%" name="Terminal"
       }
