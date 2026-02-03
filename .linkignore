@@ -4,5 +4,7 @@
 .gitignore
 .gitmodules
 
+doc
+
 README.md
 install.sh
