@@ -25,6 +25,10 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
 ##########################
 ## load local settings ###
 ##########################
@@ -42,7 +46,7 @@ fi
 # nvim
 NVIM_PATH="/opt/nvim"
 if [ "$NVIM_PATH" ]; then
-  export PATH="$PATH:/opt/nvim/"
+  export PATH="/opt/nvim:$PATH"
 fi
 
 # Setup StarShip
