@@ -2,4 +2,12 @@
 	email = hirotaskhashi@gmail.com
 	name = hirotask
 [ghq]
-	root = ~/ghq
+  root = ~/ghq
+
+[alias]
+  st = status
+  co = checkout
+  sw = switch
+  br = branch
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+
