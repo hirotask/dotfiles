@@ -6,3 +6,12 @@ local opt = vim.opt
 
 opt.clipboard = "unnamed"
 opt.conceallevel = 0
+
+-- formatting
+g.autoformat = true
+
+-- appearance
+opt.shortmess:append("I")
+opt.fillchars = { eob = " " }
+opt.laststatus = 3
+opt.termguicolors = true
